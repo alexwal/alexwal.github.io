@@ -56,6 +56,7 @@
   color: #ebebeb;
 }
 .menu-items {
+  text-align: center;
   display: inline-block;
 }
 .sitename {
@@ -93,7 +94,7 @@ a.sitename, a:visited.sitename {
     display: none;
   }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 580px) {
   .menu { 
     position: relative;
     width: 100%;
