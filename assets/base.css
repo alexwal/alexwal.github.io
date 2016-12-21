@@ -3,7 +3,6 @@
 
 /* RESET */
 * {
-  margin: 0;
   padding: 0;
   border: 0;
 }
@@ -15,7 +14,6 @@ body {
   color: #fff;
   margin: 0;
   overflow-x: hidden;
-  /*padding-top: 70px;*/
 }
 
 .fancy_title {
@@ -166,7 +164,7 @@ code.transparentBox {
 
 .resize_fit_center {
     vertical-align: middle;
-    width: 10%;
+    width: 20%;
     margin: 6% 0 auto;
     text-align: center;
 }
