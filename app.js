@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
-var fname = document.location.pathname.match(/[^\/]+$/)[0]
+var path = window.location.pathname;
+var fname = path.split("/").pop();
+
 if (fname == 'coursework.html') {
 	return;
 };
