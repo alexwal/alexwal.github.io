@@ -29,7 +29,7 @@ if (fname == 'coursework.html') {
 
   	var nav_top = $('.fixed-nav-bar')[0].getBoundingClientRect().top
   	var viewportHeight = $(window).height();
-  	console.log(nav_top, $(window).scrollTop())
+  	// console.log(nav_top, $(window).scrollTop())
   	if (nav_top <= 0) {
 		$('.fixed-nav-bar').removeClass('snap_to_bottom');
       	$('.fixed-nav-bar').addClass('make_sticky');
