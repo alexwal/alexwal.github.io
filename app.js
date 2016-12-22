@@ -30,6 +30,19 @@ $('#container img').each(function(){
 var path = window.location.pathname;
 var fname = path.split("/").pop();
 
+// Goes back when on page that is not index.html. 
+var backbutton = document.getElementById("backButton");
+if (fname != "index.html") {
+window.onload = function(){ 
+    // your code 
+	backbutton.onclick = function(e){
+	  e = e || window.event; // support  for IE8 and lower
+	  e.preventDefault(); // stop browser from doing native logic
+	  window.history.back();
+	}
+};
+};
+
 if (fname == 'coursework.html' || fname == 'CV.html') {
 	return;
 };
