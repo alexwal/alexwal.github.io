@@ -40,12 +40,12 @@
 
 /* Example responsive navigation menu  */
 .fixed-nav-bar li, .fixed-nav-bar a { 
-  height: 50px;
-  line-height: 50px;
+  /*height: 50px;*/
+  line-height: 0px;
 }
 
 .menu {
-  width: 90%;
+  width: 100%;
   max-width: 960px;
   margin: 0 auto;
 }

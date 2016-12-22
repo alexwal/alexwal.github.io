@@ -1,9 +1,14 @@
 $(document).ready(function() {
 
+var fname = document.location.pathname.match(/[^\/]+$/)[0]
+if (fname == 'coursework.html') {
+	return;
+};
+
 // Handles smooth scrolling
 	$('a[href^="#"]').on('click', function(event) {
 	    var target = $(this.getAttribute('href'));
-	    console.log(target.selector)
+	    // console.log(target.selector)
 	    if( target.length ) {
 	    	var padding = 60
 	    	if ( target.selector == "#menu") {
@@ -22,6 +27,7 @@ $(document).ready(function() {
 
   	var nav_top = $('.fixed-nav-bar')[0].getBoundingClientRect().top
   	var viewportHeight = $(window).height();
+  	console.log(nav_top, $(window).scrollTop())
   	if (nav_top <= 0) {
 		$('.fixed-nav-bar').removeClass('snap_to_bottom');
       	$('.fixed-nav-bar').addClass('make_sticky');
