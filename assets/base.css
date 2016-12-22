@@ -85,7 +85,7 @@ color: #fff;
   position: relative;
   background: #ffffff url(images/desk.jpg) no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
+  max-height: 100vh;
  }
 
 .content_coursework {
@@ -98,7 +98,6 @@ color: #fff;
 div.CV_image {
   margin: 0 auto;
   width: 80%;
-  /*max-height: 100vh; */
   content:url(images/Alex_Walczak_CV.png);
   margin-bottom: 20px;
 }​
