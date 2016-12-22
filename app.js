@@ -3,7 +3,7 @@ $(document).ready(function() {
 var path = window.location.pathname;
 var fname = path.split("/").pop();
 
-if (fname == 'coursework.html') {
+if (fname == 'coursework.html' || fname == 'CV.html') {
 	return;
 };
 

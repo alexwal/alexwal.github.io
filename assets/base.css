@@ -95,6 +95,14 @@ color: #fff;
   height: 100%;
  }
 
+div.CV_image {
+  margin: 0 auto;
+  width: 80%;
+  /*max-height: 100vh; */
+  content:url(images/Alex_Walczak_CV.png);
+  margin-bottom: 20px;
+}​
+
 .description, .some-related-articles {
   width: 90%;
   max-width: 960px;
