@@ -213,14 +213,11 @@ code.transparentBox {
     margin: 0 auto;
     text-align: center;
     overflow: hidden;
-    vertical-align: middle;
 }
 #container > img{
-    /*max-width: 100%;*/
-    /*height: auto;*/
     min-height: 20%;
-    max-width: 90%;
-    /*float:left;*/
+    min-width: 32%;
+    vertical-align: middle;
 }
 
 td {
