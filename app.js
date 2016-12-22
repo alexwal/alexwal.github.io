@@ -1,5 +1,21 @@
 $(document).ready(function() {
 
+// START OF CONTAINER MAGIC
+var container_width = $('#container').width();
+var container_width_temp = 0.0; // must be float!
+var container_height = 100.0; // random initial container height for calculations
+$('#container img').each(function(){
+    var newwidth = (this.width / this.height) * container_height;
+    this.width = newwidth;
+    $(this).data('width', newwidth); // store this here because width attribute is an int and not a float, and you don't want to loose precision here!
+    container_width_temp += newwidth;
+});
+
+$('#container img').each(function(){
+    this.width = $(this).data('width') * (container_width / container_width_temp);
+});
+// END
+
 var path = window.location.pathname;
 var fname = path.split("/").pop();
 
@@ -64,4 +80,3 @@ if (fname == 'coursework.html' || fname == 'CV.html') {
 
   });
 });
-
