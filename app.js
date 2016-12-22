@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
-if(window.innerHeight <= window.innerWidth){
-  alert("Please use Portrait!");
-}
+// if(window.innerHeight <= window.innerWidth){
+//   alert("Please use Portrait!");
+// }
 
 // START OF CONTAINER MAGIC
 var container_width = $('#container').width();
