@@ -9,11 +9,15 @@
 }
 
 .snap_to_bottom {
+  width: 100% !important;
   position: absolute;
   top: 100vh;
+  left: 0;
+  right: 0;
 }
 
 .make_sticky {
+  width: 100% !important;
   position: fixed;
   top: 0;
   left: 0;
