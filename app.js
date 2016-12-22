@@ -54,6 +54,12 @@ if (fname == 'coursework.html' || fname == 'CV.html') {
 // Handles sticky navigation bar
   $(window).scroll(function() {
 
+  	// Check when scroll :P
+	// On mobile devices, request portrait.
+	if(window.innerHeight <= window.innerWidth && window.mobilecheck()){
+	  alert("Please view in Portrait mode!");
+	}
+
   	var nav_top = $('.fixed-nav-bar')[0].getBoundingClientRect().top
   	var viewportHeight = $(window).height();
   	// console.log(nav_top, $(window).scrollTop())
