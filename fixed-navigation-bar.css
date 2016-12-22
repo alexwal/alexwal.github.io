@@ -132,6 +132,11 @@ a.sitename, a:visited.sitename {
   #menu:target .hide, #menu:target .menu-items {
     display: inline-block;
   }
+
+  .fixed-nav-bar li, .fixed-nav-bar a {
+    height: 50px;
+    line-height: 50px;
+  }
 }
 
 @media only screen and (max-width: 220px) {
