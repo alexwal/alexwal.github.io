@@ -39,9 +39,17 @@
 }
 
 /* Example responsive navigation menu  */
-.fixed-nav-bar li, .fixed-nav-bar a { 
-  /*height: 50px;*/
+ul{
+    margin: 1%;
+}
+
+/*NOT in dropdown menu mode*/
+.fixed-nav-bar li { 
   line-height: 0px;
+}
+
+.fixed-nav-bar a { 
+  line-height: 40px;
 }
 
 .menu {
@@ -133,6 +141,7 @@ a.sitename, a:visited.sitename {
     display: inline-block;
   }
 
+/* IN dropdown menu mode*/
   .fixed-nav-bar li, .fixed-nav-bar a {
     height: 50px;
     line-height: 50px;

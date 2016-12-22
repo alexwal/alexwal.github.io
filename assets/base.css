@@ -29,6 +29,14 @@ body {
   box-sizing: border-box;
 }
 
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 96%;               
+  background-color: #bcbcbc;
+  height: 1px;
+}
 
 h1, h2 {
   font-family: "Signika", sans-serif;
@@ -101,7 +109,8 @@ color: #fff;
 }
 .some-related-articles h1 {
   color: #384e56;
-  margin-top: 60px;
+  margin-top: 5%;
+  margin-bottom: 2%;
   text-transform: uppercase;
 }
 .some-related-articles h2 a:link, .some-related-articles h2 a:visited  {
@@ -150,7 +159,7 @@ color: #fff;
 }
 
 .transparentBox {
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
     /*margin: 5%;*/
     font-weight: bold;
@@ -191,4 +200,8 @@ code.transparentBox {
 
 td {
     width: 35%;
+}
+
+li {
+  padding-bottom: 0.5%;
 }
