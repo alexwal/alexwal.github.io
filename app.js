@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+if(window.innerHeight <= window.innerWidth){
+  alert("Please use Portrait!");
+}
+
 // START OF CONTAINER MAGIC
 var container_width = $('#container').width();
 var container_width_temp = 0.0; // must be float!

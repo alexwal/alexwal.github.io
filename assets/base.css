@@ -232,3 +232,24 @@ td {
 li {
   padding-bottom: 0.5%;
 }
+
+#static_container { display:block; }
+@media only screen and (orientation:portrait){
+  #static_container {  
+    height: 100vw;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+}
+@media only screen and (orientation:landscape){
+  #static_container {  
+     -webkit-transform: rotate(0deg);
+     -moz-transform: rotate(0deg);
+     -o-transform: rotate(0deg);
+     -ms-transform: rotate(0deg);
+     transform: rotate(0deg);
+  }
+}
