@@ -211,13 +211,16 @@ code.transparentBox {
 #container{
     display: block;
     margin: 0 auto;
+    margin-bottom: 3%;
     text-align: center;
     overflow: hidden;
 }
 #container > img{
-    min-height: 20%;
-    min-width: 32%;
+    min-height: 30%;
+    min-width: 30%;
     vertical-align: middle;
+    padding-left: 7px;
+    padding-right: 7px;
 }
 
 td {
