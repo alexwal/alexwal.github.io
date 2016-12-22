@@ -216,7 +216,8 @@ code.transparentBox {
     overflow: hidden;
 }
 #container > img{
-    min-height: 30%;
+    /*min-height: 30%;*/
+    height: auto;
     min-width: 30%;
     vertical-align: middle;
     padding-left: 7px;
