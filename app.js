@@ -34,11 +34,19 @@ var fname = path.split("/").pop();
 var backbutton = document.getElementById("backButton");
 if (fname != "index.html") {
 window.onload = function(){ 
-    // your code 
-	backbutton.onclick = function(e){
-	  e = e || window.event; // support  for IE8 and lower
-	  e.preventDefault(); // stop browser from doing native logic
-	  window.history.back();
+    // your code
+    if (window.mobilecheck()) {
+		backbutton.onclick = function(e){
+		  e = e || window.event; // support  for IE8 and lower
+		  e.preventDefault(); // stop browser from doing native logic
+		  window.history.go(-2);
+		}
+	} else {
+		backbutton.onclick = function(e){
+		  e = e || window.event; // support  for IE8 and lower
+		  e.preventDefault(); // stop browser from doing native logic
+		  window.history.back();
+		}
 	}
 };
 };
