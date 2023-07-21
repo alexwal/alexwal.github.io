@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            font-size: 1em;
+        }
+        p {
+            font-size: 1rem;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var userPreferedFontSize = localStorage.getItem('userFontSize'); // retrieve from localstorage or from user's profile.
+            if (userPreferedFontSize) {
+                document.documentElement.style.fontSize = userPreferedFontSize + 'px';
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Dynamic Type Example</h1>
+    <h2>Subheading</h2>
+    <p>This is a paragraph text. The size of this text will change based on user's settings.</p>
+</body>
+</html>
