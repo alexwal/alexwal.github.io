@@ -5,24 +5,33 @@
 		 Privacy Policy
       </TITLE>
 	  <style>
+	  	:root {
+			color-scheme: light dark;
+		}
+		
   		html {
   		  font-family: -apple-system,BlinkMacSystemFont,sans-serif;
-  		  /* 1 */
   		  -ms-text-size-adjust: 100%;
-  		  /* 2 */
   		  -webkit-text-size-adjust: 100%;
-  		  /* 2 */
   		}
 		
 		body {
 			width: 60%;
 			margin: 30px auto;
+			color: #333;
+			background-color: #fff;
+		}
+		
+		@media (prefers-color-scheme: dark) {
+  			body {
+				color: #ddd;
+				background-color: #222;
+  			}
 		}
 		
 		p {
 			text-align: center;
 			font-size: 16px;
-			/**padding-top: 100px;**/
 			line-height: 1.5;
 		}
 		
@@ -36,10 +45,6 @@
 			flex-wrap: wrap;
 		}
 		
-		.right {
-		float: right;
-		}
-
 		.cell {
 		display: inline-block;
 		margin:32px;
@@ -47,7 +52,6 @@
 
 		.quell-header {
 		width: 90%;
-		/**margin-bottom:10px;**/
 		margin: 0 auto;
 		font-size:150%;
 		padding-top:0;
@@ -68,6 +72,7 @@
 			position: relative;
 			left: -50%;
 			vertical-align:middle;
+			width: 100px; /* Specify the width or height */
 		}
 		
 		.quell-centered-image-div {
