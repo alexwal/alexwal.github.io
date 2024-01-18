@@ -29,10 +29,11 @@
 <p>You've reached the homepage of Alex Walczak. I am a software engineer at Google (product area: YouTube). I'm very happy with my current employment and am not seeking other opportunities.<br><br><a href="./assets/Alexander_Walczak_CV.pdf">Click here</a> to view my resume and contact information.<br><br>Thanks for stopping by!</p>
 
 <!-- The button used to copy the text -->
-<button id="copy_button">Copy PCR</button>
+<button id="copy_button" onclick="navigator.clipboard.writeText($('#textbox').text());">Copy PCR</button>
 <br/>
 <script>
 $('#copy_button').on('click', () => {
+  this.select();
   navigator.clipboard.writeText($('#textbox').val()).then(
     () => {
       console.log('clipboard successfully set');
@@ -81,7 +82,7 @@ Canceled
 Unit 93K1 dispatched to a X. Unit was canceled by dispatch while en route and returned to service WOI.
 
 Incident Unfounded/Gone Upon Arrival
-Unit 93K1 dispatched to a X. Unit responded non?emergent and arrived on scene WOI. Upon arrival, unit found no individuals with injuries or in need of EMS assistance. Unit was not flagged by anyone. Unit canvassed the area and searched all four corners. [Gone: Bystander advised that that individual who called was here but left/was taken by another unit.] Unit advised dispatch and asked for a callback. Unit was canceled by dispatch and returned to service WOI." 
+Unit 93K1 dispatched to a X. Unit responded non?emergent and arrived on scene WOI. Upon arrival, unit found no individuals with injuries or in need of EMS assistance. Unit was not flagged by anyone. Unit canvassed the area and searched all four corners. [Gone: Bystander advised that that individual who called was here but left/was taken by another unit.] Unit advised dispatch and asked for a callback. Unit was canceled by dispatch and returned to service WOI.
 </textarea>
 
 <!-- LinkedIn Badge -->
