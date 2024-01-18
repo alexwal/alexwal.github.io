@@ -28,18 +28,21 @@
 <body>
 <p>You've reached the homepage of Alex Walczak. I am a software engineer at Google (product area: YouTube). I'm very happy with my current employment and am not seeking other opportunities.<br><br><a href="./assets/Alexander_Walczak_CV.pdf">Click here</a> to view my resume and contact information.<br><br>Thanks for stopping by!</p>
 
-<!-- The button used to copy the text -->
-
-
 <script>
-document.querySelector("button").onclick = function() {
-  document.querySelector("textarea").select();
-  document.execCommand('copy');
-  alert("Copied!");
-};
+$('button').on('click', () => {
+  navigator.clipboard.writeText($('textarea').val()).then(
+    () => {
+      console.log('clipboard successfully set');
+    },
+    () => {
+      console.error('clipboard write failed');
+    }
+  );
+});
 </script>
-
+<!-- The button used to copy the text -->
 <button>Copy PCR</button>
+
 <!-- The text field -->
 <textarea>
 COMBO: Transport/Refusal/Canceled/Unfounded/Gone (94/93/87/90/96)
