@@ -31,19 +31,6 @@
 <!-- The button used to copy the text -->
 <button id="copy_button" onclick="navigator.clipboard.writeText($('#textbox').text());">Copy PCR</button>
 <br/>
-<script>
-$('#copy_button').on('click', () => {
-  this.select();
-  navigator.clipboard.writeText($('#textbox').val()).then(
-    () => {
-      console.log('clipboard successfully set');
-    },
-    () => {
-      console.error('clipboard write failed');
-    }
-  );
-});
-</script>
 
 <!-- The text field -->
 <textarea id="textbox">
