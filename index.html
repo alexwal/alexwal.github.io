@@ -29,25 +29,17 @@
 <p>You've reached the homepage of Alex Walczak. I am a software engineer at Google (product area: YouTube). I'm very happy with my current employment and am not seeking other opportunities.<br><br><a href="./assets/Alexander_Walczak_CV.pdf">Click here</a> to view my resume and contact information.<br><br>Thanks for stopping by!</p>
 
 <!-- The button used to copy the text -->
-<button onclick="myFunction()">Copy PCR</button>
+
 
 <script>
-function myFunction() {
-  // Get the text field
-  var copyText = document.getElementById("myInput");
-
-  // Select the text field
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); // For mobile devices
-
-   // Copy the text inside the text field
-  navigator.clipboard.writeText(copyText.value);
-
-  // Alert the copied text
-  alert("Copied the text: " + copyText.value);
-}
+document.querySelector("button").onclick = function() {
+  document.querySelector("textarea").select();
+  document.execCommand('copy');
+  alert("Copied!");
+};
 </script>
 
+<button>Copy PCR</button>
 <!-- The text field -->
 <textarea>
 COMBO: Transport/Refusal/Canceled/Unfounded/Gone (94/93/87/90/96)
