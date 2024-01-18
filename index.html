@@ -36,11 +36,9 @@ $('button').on('click', () => {
   navigator.clipboard.writeText($('textarea').val()).then(
     () => {
       console.log('clipboard successfully set');
-      alert('Copied!');
     },
     () => {
       console.error('clipboard write failed');
-      alert('Error');
     }
   );
 });
