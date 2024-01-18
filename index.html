@@ -28,20 +28,23 @@
 <body>
 <p>You've reached the homepage of Alex Walczak. I am a software engineer at Google (product area: YouTube). I'm very happy with my current employment and am not seeking other opportunities.<br><br><a href="./assets/Alexander_Walczak_CV.pdf">Click here</a> to view my resume and contact information.<br><br>Thanks for stopping by!</p>
 
+<!-- The button used to copy the text -->
+<button>Copy PCR</button>
+<br/>
 <script>
 $('button').on('click', () => {
   navigator.clipboard.writeText($('textarea').val()).then(
     () => {
       console.log('clipboard successfully set');
+      alert('Copied!');
     },
     () => {
       console.error('clipboard write failed');
+      alert('Error');
     }
   );
 });
 </script>
-<!-- The button used to copy the text -->
-<button>Copy PCR</button>
 
 <!-- The text field -->
 <textarea>
