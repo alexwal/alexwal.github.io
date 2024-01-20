@@ -28,11 +28,11 @@
 <body>
 
 <!-- The button used to copy the text -->
-<button id="copy_button" onclick="navigator.clipboard.writeText($('#textbox').text());alert('Copied!')">Copy Narrative</button>
+<button id="copy_button-main" onclick="navigator.clipboard.writeText($('#textbox-main').text());alert('Copied!')">Copy Narrative</button>
 <br>
 
 <!-- The text field -->
-<textarea id="textbox" rows="20" style="height: auto; width: 90%; max-width: 90%;">
+<textarea id="textbox-main" rows="20" style="height: auto; width: 90%; max-width: 90%;">
 COMBO: Transport/Refusal/Canceled/Unfounded/Gone (94/93/87/90/96)
 
 Transport: What pt told you (subjective)
@@ -69,6 +69,32 @@ Unit 93K1 dispatched to a X. Unit was canceled by dispatch while en route and re
 
 Incident Unfounded/Gone Upon Arrival
 Unit 93K1 dispatched to a X. Unit responded non?emergent and arrived on scene WOI. Upon arrival, unit found no individuals with injuries or in need of EMS assistance. Unit was not flagged by anyone. Unit canvassed the area and searched all four corners. [Gone: Bystander advised that that individual who called was here but left/was taken by another unit.] Unit advised dispatch and asked for a callback. Unit was canceled by dispatch and returned to service WOI.
+</textarea>
+
+<br>
+<!-- The button used to copy the text -->
+<button id="copy_button-93" onclick="navigator.clipboard.writeText($('#textbox-93').text());alert('Copied!')">Copy Narrative</button>
+<br>
+<!-- The text field -->
+<textarea id="textbox-93" rows="20" style="height: auto; width: 90%; max-width: 90%;">
+93K1 dispatched to the emergency call for the INJURY?.
+
+Upon arrival, unit found approx X y/o M/F seated on subway platform floor, in company of PD and MTA staff, with [injury]. Pt alert but presents with disorganized thought? unable? to articulate how they sustained the injury to their head. No? witnesses were present on scene to report events leading up to Pt's injury. Pt solely shares “quote.” Pt refused to answer questioning on their medical history, allergies, medications, or present symptoms.
+
+Pt alert but refused to answer questions on time or event. Positive and self maintained airway; respiratory effort regular and unlabored - Pt refused L/S assessment; Pt moved all 4 extremities spontaneously, and without noticeable complaint. Visual PE scan reveals: X; otherwise, intact HEENT;
+PERRL; no? obvious guarding noted. Pt refused BP, PR [noted for purposes of advancing PCR], SpO2, and BGL assessment. RR and skin assessment WNL. Pt's gait mildly unsteady. Head to toe assessment reveals no other signs of DCAP-BTLS. Rest of PE unremarkable.
+
+At pickup location, Pt assisted to standing height?, offered evaluation, but Pt refused. Pt guided to street level?, re-offered evaluation, but Pt continued to refuse. MTA and NYPD assisted with attempts to convince Pt to be evaluated, but Pt then walked away from EMS, reiterating they have no medical complaints and do not need medical evaluation. Pt last seen walking southbound on X St at X/Y St (give intersection) sidewalk, ambulating steadily?, in no obvious distress. 10-93 refused all signaled. 93K1 cleared scene WOl.
+</textarea>
+
+<!-- New textarea, update button and textarea id and button code. -->
+<br>
+<!-- The button used to copy the text -->
+<button id="copy_button-?" onclick="navigator.clipboard.writeText($('#textbox-?').text());alert('Copied!')">Copy Narrative</button>
+<br>
+<!-- The text field -->
+<textarea id="textbox-?" rows="20" style="height: auto; width: 90%; max-width: 90%;">
+  Blank.
 </textarea>
 
  </body>
