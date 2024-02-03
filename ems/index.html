@@ -30,7 +30,7 @@
 <body>
 
 <!-- The button used to copy the text -->
-<button id="copy_button-main" onclick="navigator.clipboard.writeText($('#textbox-main').text());alert('Copied!')">Copy Narrative</button>
+<button id="copy_button-main" onclick="navigator.clipboard.writeText($('#textbox-main').val());alert('Copied!')">Copy Narrative</button>
 <br>
 
 <!-- The text field -->
@@ -75,7 +75,7 @@ Unit 93K1 dispatched to a X. Unit responded non?emergent and arrived on scene WO
 
 <br>
 <!-- The button used to copy the text -->
-<button id="copy_button-93" onclick="navigator.clipboard.writeText($('#textbox-93').text());alert('Copied!')">Copy Narrative</button>
+<button id="copy_button-93" onclick="navigator.clipboard.writeText($('#textbox-93').val());alert('Copied!')">Copy Narrative</button>
 <br>
 <!-- The text field -->
 <textarea id="textbox-93" rows="20" onclick="this.focus();this.select()" style="height: auto; width: 90%; max-width: 90%;">
@@ -93,7 +93,7 @@ At pickup location, Pt assisted to standing height?, offered evaluation, but Pt 
 <!-- New textarea, update button and textarea id and button code. -->
 <!-- <br> -->
 <!-- The button used to copy the text -->
-<!-- <button id="copy_button-?" onclick="navigator.clipboard.writeText($('#textbox-?').text());alert('Copied!')">Copy Narrative</button> -→
+<!-- <button id="copy_button-?" onclick="navigator.clipboard.writeText($('#textbox-?').val());alert('Copied!')">Copy Narrative</button> -→
 <!-- <br> -->
 <!--
 <textarea id="textbox-?" rows="20" onclick="this.focus();this.select()" style="height: auto; width: 90%; max-width: 90%;">
