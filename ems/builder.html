@@ -291,11 +291,11 @@ MRN: X (no insurance)\n`;
     <label>Blood thinners:</label><br>
     <input type="radio" name="blood thinners" value="reports">reports
     <input type="radio" name="blood thinners" value="denies" checked>denies<br><br>
-  </fieldset>
+  </fieldset><br>
 
   <label for="painScale">Pain scale (0-10):</label>
   <select id="painScale">
-    <option value="">Select…</option>
+    <option value="PAINSCALE">Select…</option>
     <option value="0">0 - no Pain</option>
     <option value="1">1 - Minimal Pain</option>
     <option value="2">2 - Mild Pain</option>
@@ -337,18 +337,22 @@ MRN: X (no insurance)\n`;
   <!-- Initially displayed text field for PMHX details -->
   <div id="pmhxDetails" style="display: block;">
     <label for="pmhxDetailsText" style="margin-left: 15px;">Details:</label>
-    <input type="text" id="pmhxDetailsText" placeholder="PMHx details…"><br>
+    <input type="text" id="pmhxDetailsText" placeholder="e.g., T2DM, asth., CHF…"><br>
   </div>
 
 <h2>III. Objective assessment</h2>
 
 <label for="alertnessOrientation">A&O status:</label>
 <select id="alertnessOrientation">
+  <option value="AOSTATUS">Select…</option>
   <option value="A&Ox4">A&Ox4 (Alert & Oriented to person, place, time, and situation)</option>
   <option value="A&Ox3 (oriented to X but not Y)">A&Ox3</option>
   <option value="A&Ox2 (oriented to X but not Y)">A&Ox2</option>
   <option value="A&Ox1 (oriented to X but not Y)">A&Ox1</option>
-</select><br>
+  <option value="alert to voice">alert to voice</option>
+  <option value="alert to pain">alert to pain</option>
+  <option value="unresponsive">unresponsive</option>
+</select><br><br>
 
 <fieldset>
   <legend>Physical exam</legend>
