@@ -103,7 +103,7 @@
         var findings = [];
         assessments.forEach(function(assessment) {
           var value = $(`input[name='${assessment}']:checked`).val();
-          if (value === 'Yes') {
+          if (value === 'yes') {
             findings.push(assessment);
           } else if (value !== 'N/A') {
             findings.push("NEGATIVE FOR " + assessment + " (EXPLAIN)");
@@ -143,9 +143,9 @@ EDP: Pt denies SI/HI, auditory hallucinations, and visual hallucinations.
 Pt denies all other pain or injury.
 PD was on scene (officer X, shield Y, pct Z).\n\n`
       // 3. Objective (what you assessed: EMT answers yes/no)
-      + `Pt ${alertnessOrientation}, PE reveals ${physicalExamFindings}. Head to toe assessment reveals X. Lung sounds clear? JVD? ABD sounds present? No other obvious signs of DCAP-BTLS. BP, PR, RR, SPO2, and skin assessment WNL (state abnormal values). S-LAMS score X. Rest of PE unremarkable.
+      + `Pt ${alertnessOrientation}, PE reveals ${physicalExamFindings}. Head to toe assessment reveals X. Lung sounds clear? JVD? ABD sounds present? no other obvious signs of DCAP-BTLS. BP, PR, RR, SPO2, and skin assessment WNL (state abnormal values). S-LAMS score X. Rest of PE unremarkable.
 TRAUMA: Pt can recall the event in its entirety.
-MVA: Pertinent event/damage details. Speed. Upon inspection of vehicle, unit found airbags deployed, X ft of penetrating damage into the cabin. Front bumper is deformed. No damage to side of vehicle.
+MVA: Pertinent event/damage details. Speed. Upon inspection of vehicle, unit found airbags deployed, X ft of penetrating damage into the cabin. Front bumper is deformed. no damage to side of vehicle.
 INJ: Pt was offered and refused a cervical collar
 Pt was given [treatments]
 ALS: Pt was given treatments by ALS, refer to unit XX’s PCR (#) for treatments and interventions.\n\n`
@@ -296,7 +296,7 @@ MRN: X (no insurance)\n`;
   <label for="painScale">Pain scale (0-10):</label>
   <select id="painScale">
     <option value="">Select…</option>
-    <option value="0">0 - No Pain</option>
+    <option value="0">0 - no Pain</option>
     <option value="1">1 - Minimal Pain</option>
     <option value="2">2 - Mild Pain</option>
     <option value="3">3 - Uncomfortable Pain</option>
@@ -354,48 +354,48 @@ MRN: X (no insurance)\n`;
   <legend>Physical exam</legend>
 
   <label>Positive patent airway:</label><br>
-  <input type="radio" name="positive patent airway" value="Yes">Yes
-  <input type="radio" name="positive patent airway" value="No">No
+  <input type="radio" name="positive patent airway" value="yes">yes
+  <input type="radio" name="positive patent airway" value="no">no
   <input type="radio" name="positive patent airway" value="N/A" checked>N/A<br><br>
 
   <label>Respiratory effort regular and unlabored:</label><br>
-  <input type="radio" name="respiratory effort regular and unlabored" value="Yes">Yes
-  <input type="radio" name="respiratory effort regular and unlabored" value="No">No
+  <input type="radio" name="respiratory effort regular and unlabored" value="yes">yes
+  <input type="radio" name="respiratory effort regular and unlabored" value="no">no
   <input type="radio" name="respiratory effort regular and unlabored" value="N/A" checked>N/A<br><br>
 
   <label>Positive distal pulses:</label><br>
-  <input type="radio" name="positive distal pulses" value="Yes">Yes
-  <input type="radio" name="positive distal pulses" value="No">No
+  <input type="radio" name="positive distal pulses" value="yes">yes
+  <input type="radio" name="positive distal pulses" value="no">no
   <input type="radio" name="positive distal pulses" value="N/A" checked>N/A<br><br>
 
-  <label>No obvious sign of hemorrhage:</label><br>
-  <input type="radio" name="no obvious sign of hemorrhage" value="Yes">Yes
-  <input type="radio" name="no obvious sign of hemorrhage" value="No">No
+  <label>no obvious sign of hemorrhage:</label><br>
+  <input type="radio" name="no obvious sign of hemorrhage" value="yes">yes
+  <input type="radio" name="no obvious sign of hemorrhage" value="no">no
   <input type="radio" name="no obvious sign of hemorrhage" value="N/A" checked>N/A<br><br>
 
   <label>HEENT intact:</label><br>
-  <input type="radio" name="HEENT intact" value="Yes">Yes
-  <input type="radio" name="HEENT intact" value="No">No
+  <input type="radio" name="HEENT intact" value="yes">yes
+  <input type="radio" name="HEENT intact" value="no">no
   <input type="radio" name="HEENT intact" value="N/A" checked>N/A<br><br>
 
   <label>PERRL:</label><br>
-  <input type="radio" name="PERRL" value="Yes">Yes
-  <input type="radio" name="PERRL" value="No">No
+  <input type="radio" name="PERRL" value="yes">yes
+  <input type="radio" name="PERRL" value="no">no
   <input type="radio" name="PERRL" value="N/A" checked>N/A<br><br>
 
   <label>ABD SS/NT/NDx4 quadrants:</label><br>
-  <input type="radio" name="ABD SS/NT/NDx4" value="Yes">Yes
-  <input type="radio" name="ABD SS/NT/NDx4" value="No">No
+  <input type="radio" name="ABD SS/NT/NDx4" value="yes">yes
+  <input type="radio" name="ABD SS/NT/NDx4" value="no">no
   <input type="radio" name="ABD SS/NT/NDx4" value="N/A" checked>N/A<br><br>
 
   <label>Positive PMSx4 extremities:</label><br>
-  <input type="radio" name="positive PMSx4" value="Yes">Yes
-  <input type="radio" name="positive PMSx4" value="No">No
+  <input type="radio" name="positive PMSx4" value="yes">yes
+  <input type="radio" name="positive PMSx4" value="no">no
   <input type="radio" name="positive PMSx4" value="N/A" checked>N/A<br><br>
 
   <label>Gait steady:</label><br>
-  <input type="radio" name="gait steady" value="Yes">Yes
-  <input type="radio" name="gait steady" value="No" checked>No
+  <input type="radio" name="gait steady" value="yes">yes
+  <input type="radio" name="gait steady" value="no" checked>no
   <input type="radio" name="gait steady" value="N/A" checked>N/A<br><br>
 
   <!-- For additional assessments, ensure unique name attributes and add to assessments list. -->
