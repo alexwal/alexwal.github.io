@@ -117,8 +117,8 @@
       var patientAge = $('#patientAge').val();
       var patientGender = $('#patientGender').val();
       var consciousness = $('#consciousness').val();
-      var distressLevel = $('#distressLevel').val();
       var positionFound = $('#positionFound').val();
+      var distressLevel = $('#distressLevel').val();
       var chiefComplaint = $('#chiefComplaint').val();
       var painScale = $('#painScale').val();
       var alertnessOrientation = $('#alertnessOrientation').val();
@@ -135,7 +135,7 @@
       `93K1 dispatched to the emergency call for the ${callType}.\n\n`
       // 2. Subjective (what pt told you: reports/denies)
       + `Upon arrival, unit found approx ${patientAge} y/o ${patientGender} ${consciousness}, `
-      + `in ${distressLevel} distress, ${positionFound}. `
+      + `${positionFound}, in ${distressLevel} distress. `
       + `Pt reports ${chiefComplaint}. `
       + `SAMPLE/OPQRST. Pain ${painScale} out of 10. `
       + `"Pt quote." ${alcoholConsumption}. Pt ${pastMedicalHistory}. Pt ${conditionsText}.
@@ -233,14 +233,6 @@ MRN: X (no insurance)\n`;
     <!-- Add more options as needed -->
   </select><br>
 
-  <label for="distressLevel">Distress level:</label>
-  <select id="distressLevel">
-    <option value="no obvious">none</option>
-    <option value="mild">mild</option>
-    <option value="moderate">moderate</option>
-    <option value="severe">severe</option>
-  </select><br>
-
   <label for="positionFound">Position found:</label>
   <select id="positionFound">
     <option value="POSITION">Select…</option>
@@ -251,6 +243,14 @@ MRN: X (no insurance)\n`;
     <option value="in recovery position">in recovery position</option>
     <!-- Add more options as needed -->
   </select><br>
+
+  <label for="distressLevel">Distress level:</label>
+  <select id="distressLevel">
+    <option value="no obvious">none</option>
+    <option value="mild">mild</option>
+    <option value="moderate">moderate</option>
+    <option value="severe">severe</option>
+  </select><br><br>
 
   <label for="chiefComplaint">Chief complaint (with start time): Pt reports…</label>
   <input type="text" id="chiefComplaint" name="chiefComplaint" placeholder="e.g., falling 1 hour ago…">
