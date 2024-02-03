@@ -34,7 +34,7 @@
 <br>
 
 <!-- The text field -->
-<textarea id="textbox-main" rows="20" style="height: auto; width: 90%; max-width: 90%;">
+<textarea id="textbox-main" rows="20" onclick="this.focus();this.select()" style="height: auto; width: 90%; max-width: 90%;">
 COMBO: Transport/Refusal/Canceled/Unfounded/Gone (94/93/87/90/96)
 
 Transport: What pt told you (subjective)
@@ -78,7 +78,7 @@ Unit 93K1 dispatched to a X. Unit responded non?emergent and arrived on scene WO
 <button id="copy_button-93" onclick="navigator.clipboard.writeText($('#textbox-93').text());alert('Copied!')">Copy Narrative</button>
 <br>
 <!-- The text field -->
-<textarea id="textbox-93" rows="20" style="height: auto; width: 90%; max-width: 90%;">
+<textarea id="textbox-93" rows="20" onclick="this.focus();this.select()" style="height: auto; width: 90%; max-width: 90%;">
 93K1 dispatched to the emergency call for the INJURY?.
 
 Upon arrival, unit found approx X y/o M/F seated on subway platform floor, in company of PD and MTA staff, with [injury]. Pt alert but presents with disorganized thought? unable? to articulate how they sustained the injury to their head. No? witnesses were present on scene to report events leading up to Pt's injury. Pt solely shares “quote.” Pt refused to answer questioning on their medical history, allergies, medications, or present symptoms.
@@ -96,7 +96,7 @@ At pickup location, Pt assisted to standing height?, offered evaluation, but Pt 
 <!-- <button id="copy_button-?" onclick="navigator.clipboard.writeText($('#textbox-?').text());alert('Copied!')">Copy Narrative</button> -→
 <!-- <br> -->
 <!--
-<textarea id="textbox-?" rows="20" style="height: auto; width: 90%; max-width: 90%;">
+<textarea id="textbox-?" rows="20" onclick="this.focus();this.select()" style="height: auto; width: 90%; max-width: 90%;">
   Blank.
 </textarea>
 -->
