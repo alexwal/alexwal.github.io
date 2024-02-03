@@ -31,7 +31,7 @@
       function formatConditions() {
         var reports = [];
         var denies = [];
-        var conditions = ['HNBP', 'HA', 'CP', 'SOB', 'LOC', 'head strike', 'DNV', 'blood thinners'];
+        var conditions = ['HNBP', 'HA', 'CP', 'SOB', 'LOC', 'head strike', 'DNV', 'taking blood thinners'];
 
         conditions.forEach(function(condition) {
           var value = $(`input[name='${condition}']:checked`).val();
@@ -44,7 +44,7 @@
 
         var allConditions = [];
         if (reports.length > 0) {
-          allConditions.push("reports " + reports.join(" (EXPLAIN), ") + " (EXPLAIN)");
+          allConditions.push("reports " + reports.join(" (ELABORATE), ") + " (ELABORATE)");
         }
         if (denies.length > 0) {
           allConditions.push("denies " + denies.join(", "));
@@ -106,7 +106,7 @@
           if (value === 'yes') {
             findings.push(assessment);
           } else if (value !== 'N/A') {
-            findings.push("NEGATIVE FOR " + assessment + " (EXPLAIN)");
+            findings.push("NEGATIVE FOR " + assessment + " (ELABORATE)");
           }
         });
 
@@ -288,9 +288,9 @@ MRN: X (no insurance)\n`;
     <input type="radio" name="DNV" value="reports">reports
     <input type="radio" name="DNV" value="denies" checked>denies<br><br>
 
-    <label>Blood thinners:</label><br>
-    <input type="radio" name="blood thinners" value="reports">reports
-    <input type="radio" name="blood thinners" value="denies" checked>denies<br><br>
+    <label>Taking blood thinners:</label><br>
+    <input type="radio" name="taking blood thinners" value="reports">reports
+    <input type="radio" name="taking blood thinners" value="denies" checked>denies<br><br>
   </fieldset><br>
 
   <label for="painScale">Pain scale (0-10):</label>
