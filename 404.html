@@ -18,12 +18,13 @@ permalink: /404.html
     <link rel="canonical" href="http://awal.io/ems/index.html">
     <meta http-equiv="refresh" content="1; url=http://awal.io/ems/index.html">
   </head>
-  <body>
+<body>
     <h1>Redirecting...</h1>
     <a href="http://awal.io/ems/index.html">Click here if you are not redirected.</a>
     <script>
-      var n=location.href.replace("index.php?/", "");
-      if (n!=location.href)location=n;
+        if (!location.href.startsWith("https://awal.io/assets/")) {
+            window.location.replace("http://awal.io/ems/index.html");
+        }
     </script>
-  </body>
+</body>
 </html>
