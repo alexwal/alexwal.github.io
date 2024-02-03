@@ -2,81 +2,433 @@
 <html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <meta charset="utf-8">
-  <title>awal.io - EMS</title>
-  <link rel="stylesheet" href="../style.css">
-  <link rel="shortcut icon" href="./assets/images/favicon.png">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NF19YEXS1N"></script>
   <script>
-    $(document).ready(function() {
-      function updateNarrative() {
-        var injuryType = $('#injuryType').val();
-        var patientAge = $('#patientAge').val();
-        var patientGender = $('#patientGender').val();
-        var consciousness = $('#consciousness').val();
-        var distressLevel = $('#distressLevel').val();
-        // Add more variables as needed
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NF19YEXS1N');
+  </script>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- Meta tags -->
+  <meta charset="utf-8">
+  <title>awal.io - PCR Builder</title>
+  <meta name="description" content="awal.io - PCR Narrative Template">
+  <meta name="author" content="Alex Walczak">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Opt-in to Dark Mode support -->
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+  <!-- CSS -->
+  <link rel="stylesheet" href="../style.css">
+  <!-- Tab icon -->
+  <link rel="shortcut icon" href="../assets/images/favicon.png">
+  <script>
+  function updateNarrative() {
+      // Helper function to format conditions
+      function formatConditions() {
+        var reports = [];
+        var denies = [];
+        var conditions = ['HNBP', 'HA', 'CP', 'SOB', 'LOC', 'head strike', 'DNV', 'blood thinners'];
 
-        var narrative = `93K1 dispatched to the emergency call for the ${injuryType}.\n\n` +
-        `Upon arrival, unit found approx ${patientAge} y/o ${patientGender} ${consciousness}, ` +
-        `${distressLevel}, in no obvious distress.\n\n` +
-        // Continue building narrative string with all inputs
-        `...`; // Placeholder for additional narrative content
+        conditions.forEach(function(condition) {
+          var value = $(`input[name='${condition}']:checked`).val();
+          if (value === 'denies') {
+            denies.push(condition);
+          } else if (value) {
+            reports.push(condition);
+          }
+        });
 
-        $('#textbox-main').val(narrative);
+        var allConditions = [];
+        if (reports.length > 0) {
+          allConditions.push("reports " + reports.join(" (EXPLAIN), ") + " (EXPLAIN)");
+        }
+        if (denies.length > 0) {
+          allConditions.push("denies " + denies.join(", "));
+        }
+        return allConditions.join("; ");
       }
 
-      // Event listeners for form elements
-      $('input, select').change(updateNarrative);
+      function getAlcoholConsumptionText() {
+        // Get the value selected for alcohol consumption
+        var consumptionSelection = document.getElementById("alcoholConsumption").value;
+        var consumptionText = "";
+
+        // Check the selection and format the text accordingly
+        if (consumptionSelection === "denies") {
+          consumptionText = "denies consumption of alcohol";
+        } else if (consumptionSelection === "reports") {
+          // Get the details from the text input
+          var numberOfAlcoholicBeverages = document.getElementById("numberOfAlcoholicBeverages").value;
+          var timeOfAlcoholConsumption = document.getElementById("timeOfAlcoholConsumption").value;
+          // Construct the text to include the details of alcohol consumption
+          consumptionText = `reports drinking ${numberOfAlcoholicBeverages} alcoholic beverages ${timeOfAlcoholConsumption}`;
+        }
+
+        return consumptionText;
+      }
+
+      function getPMHXText() {
+        var pmhxSelection = document.getElementById("pmhxSelection").value;
+        var pmhxText = "";
+
+        if (pmhxSelection === "denies") {
+          pmhxText = "denies PMHx";
+        } else if (pmhxSelection === "reports") {
+          var details = document.getElementById("pmhxDetailsText").value;
+          pmhxText = `reports PMHx of ${details}`;
+        }
+
+        return pmhxText;
+      }
+
+      function formatPhysicalExam() {
+        // Update the array with the correct names used in your form
+        const assessments = [
+          'positive patent airway',
+          'respiratory effort regular and unlabored',
+          'positive distal pulses',
+          'no obvious sign of hemorrhage',
+          'HEENT intact',
+          'PERRL',
+          'ABD SS/NT/NDx4',
+          'positive PMSx4',
+          'gait steady',
+          // Add any additional assessments here
+        ];
+
+        var findings = [];
+        assessments.forEach(function(assessment) {
+          var value = $(`input[name='${assessment}']:checked`).val();
+          if (value === 'Yes') {
+            findings.push(assessment);
+          } else if (value !== 'N/A') {
+            findings.push("NEGATIVE FOR " + assessment + " (EXPLAIN)");
+          }
+        });
+
+        return findings.join(", ");
+      }
+
+      var callType = $('#callType').val();
+      var patientAge = $('#patientAge').val();
+      var patientGender = $('#patientGender').val();
+      var consciousness = $('#consciousness').val();
+      var distressLevel = $('#distressLevel').val();
+      var positionFound = $('#positionFound').val();
+      var chiefComplaint = $('#chiefComplaint').val();
+      var painScale = $('#painScale').val();
+      var alertnessOrientation = $('#alertnessOrientation').val();
+      var destinationHospital = $('#destinationHospital').val();
+      // Use the helper functions to get formatted text.
+      var conditionsText = formatConditions();
+      var physicalExamFindings = formatPhysicalExam();
+      var pastMedicalHistory = getPMHXText();
+      var alcoholConsumption = getAlcoholConsumptionText();
+      // Add more variables as needed
+
+      let narrative =
+      // 1. Call type
+      `93K1 dispatched to the emergency call for the ${callType}.\n\n`
+      // 2. Subjective (what pt told you: reports/denies)
+      + `Upon arrival, unit found approx ${patientAge} y/o ${patientGender} ${consciousness}, `
+      + `in ${distressLevel} distress, ${positionFound}. `
+      + `Pt reports ${chiefComplaint}. `
+      + `SAMPLE/OPQRST. Pain ${painScale} out of 10. `
+      + `"Pt quote." ${alcoholConsumption}. Pt ${pastMedicalHistory}. Pt ${conditionsText}.
+EDP: Pt denies SI/HI, auditory hallucinations, and visual hallucinations.
+Pt denies all other pain or injury.
+PD was on scene (officer X, shield Y, pct Z).\n\n`
+      // 3. Objective (what you assessed: EMT answers yes/no)
+      + `Pt ${alertnessOrientation}, PE reveals ${physicalExamFindings}. Head to toe assessment reveals X. Lung sounds clear? JVD? ABD sounds present? No other obvious signs of DCAP-BTLS. BP, PR, RR, SPO2, and skin assessment WNL (state abnormal values). S-LAMS score X. Rest of PE unremarkable.
+TRAUMA: Pt can recall the event in its entirety.
+MVA: Pertinent event/damage details. Speed. Upon inspection of vehicle, unit found airbags deployed, X ft of penetrating damage into the cabin. Front bumper is deformed. No damage to side of vehicle.
+INJ: Pt was offered and refused a cervical collar
+Pt was given [treatments]
+ALS: Pt was given treatments by ALS, refer to unit XX’s PCR (#) for treatments and interventions.\n\n`
+      // 4. Transport to hospital
+      + `At pickup location, Pt was assisted to ambulance in stretcher/walked into ambulance?, secured with straps x5, rails x2/seatbelt, and transported to H${destinationHospital} WOI and WOC. Pt was brought to ED in stretcher/walked into ED. Pt report and care transferred to receiving nurse in ED. Pt was left with their belongings. Unit was cleared from H${destinationHospital} and returned to service WOI.
+MRN: X (no insurance)\n`;
+
+      $('#textbox-main').val(narrative);
+    }
+
+  $(document).ready(function() {
+    // Generate blank narrative immediately.
+    updateNarrative();
+    // Event listeners for form elements
+    $('input, select').change(updateNarrative);
+  });
+
+    // Don't refresh when hitting Enter. https://stackoverflow.com/a/2215467
+    $(function() {
+        $("form").submit(function() { return false; });
     });
+
+  function toggleAlcoholDetails() {
+    // Check the selected value of the alcoholConsumption dropdown
+    var consumption = document.getElementById("alcoholConsumption").value;
+
+    // If "reports" is selected, show the details input field
+    if (consumption === "reports") {
+      document.getElementById("alcoholConsumptionDetails").style.display = "block";
+      document.getElementById("alcoholConsumptionDetails2").style.display = "block";
+    } else {
+      document.getElementById("alcoholConsumptionDetails").style.display = "none";
+      document.getElementById("alcoholConsumptionDetails2").style.display = "none";
+    }
+  }
+
+  function togglePMHXDetails() {
+    var pmhxSelection = document.getElementById("pmhxSelection").value;
+    if (pmhxSelection === "reports") {
+      document.getElementById("pmhxDetails").style.display = "block";
+    } else {
+      document.getElementById("pmhxDetails").style.display = "none";
+    }
+  }
   </script>
 </head>
-<body>
 
+<!-- Content -->
+<body>
+  <h1>PCR Narrative Builder</h1>
+  <p>Refresh page to reset form.</p>
 <form id="narrativeForm">
-  <label for="injuryType">Type of Injury:</label>
-  <select id="injuryType">
-    <option value="INJURY">Select Injury Type</option>
-    <option value="fall">Fall</option>
-    <option value="trauma">Trauma</option>
-    <option value="medical">Medical</option>
+
+<h2>I. Call type</h2>
+
+  <label for="callType">Call type:</label>
+  <select id="callType">
+    <option value="CALLTYPE">Select…</option>
+    <option value="unknown">unknown</option>
+    <option value="sick">sick</option>
+    <option value="trauma">trauma</option>
+    <option value="injury">injury</option>
     <!-- Add more options as needed -->
   </select><br>
 
-  <label for="patientAge">Patient Age:</label>
-  <input type="text" id="patientAge" placeholder="Approx Age"><br>
+<h2>II. Subjective</h2>
 
-  <label for="patientGender">Patient Gender:</label>
+  <label for="patientAge">Age:</label>
+  <input type="text" id="patientAge" placeholder="years old…"><br>
+
+  <label for="patientGender">Gender:</label>
   <select id="patientGender">
-    <option value="Gender">Select Gender</option>
+    <option value="MFX">Select…</option>
     <option value="M">Male</option>
     <option value="F">Female</option>
-    <!-- Add more options as needed -->
+    <option value="X">X</option>
   </select><br>
 
-  <label for="consciousness">Consciousness:</label>
+  <label for="consciousness">Level of consciousness:</label>
   <select id="consciousness">
-    <option value="conscious, alert, breathing">Conscious, Alert, Breathing</option>
-    <option value="unconscious">Unconscious</option>
+    <option value="conscious, alert, breathing">conscious, alert, breathing</option>
+    <option value="conscious, breathing">conscious, breathing</option>
+    <option value="unconscious, breathing, carotid pulse?">unconscious, breathing, carotid pulse?</option>
+    <option value="unconscious, not breathing, carotid pulse?">unconscious, not breathing, carotid pulse?</option>
     <!-- Add more options as needed -->
   </select><br>
 
-  <label for="distressLevel">Distress Level:</label>
+  <label for="distressLevel">Distress level:</label>
   <select id="distressLevel">
-    <option value="in no obvious distress">In No Obvious Distress</option>
-    <option value="in mild distress">In Mild Distress</option>
+    <option value="no obvious">none</option>
+    <option value="mild">mild</option>
+    <option value="moderate">moderate</option>
+    <option value="severe">severe</option>
+  </select><br>
+
+  <label for="positionFound">Position found:</label>
+  <select id="positionFound">
+    <option value="POSITION">Select…</option>
+    <option value="standing">standing</option>
+    <option value="sitting in chair">sitting in chair</option>
+    <option value="semi-Fowler's in bed">semi-Fowler's in bed</option>
+    <option value="prone">prone</option>
+    <option value="in recovery position">in recovery position</option>
     <!-- Add more options as needed -->
   </select><br>
 
-  <!-- Add more inputs as needed -->
+  <label for="chiefComplaint">Chief complaint (with start time) Pt reports…:</label>
+  <input type="text" id="chiefComplaint" name="chiefComplaint" placeholder="e.g., falling 1 hour ago…">
+  <br><br>
+
+  <!-- Condition inputs for HNBP, HA, CP, etc. -->
+  <fieldset>
+    <legend>Conditions</legend>
+    <!-- Example for HNBP -->
+    <label>HNBP (Head, neck, back, bain):</label><br>
+    <input type="radio" name="HNBP" value="reports">reports
+    <input type="radio" name="HNBP" value="denies" checked>denies<br><br>
+
+    <label>HA (Headache):</label><br>
+    <input type="radio" name="HA" value="reports">reports
+    <input type="radio" name="HA" value="denies" checked>denies<br><br>
+
+    <label>CP (Chest pain):</label><br>
+    <input type="radio" name="CP" value="reports">reports
+    <input type="radio" name="CP" value="denies" checked>denies<br><br>
+
+    <label>SOB (Shortness of breath):</label><br>
+    <input type="radio" name="SOB" value="reports">reports
+    <input type="radio" name="SOB" value="denies" checked>denies<br><br>
+
+    <label>LOC (Loss of consciousness):</label><br>
+    <input type="radio" name="LOC" value="reports">reports
+    <input type="radio" name="LOC" value="denies" checked>denies<br><br>
+
+    <label>Head strike:</label><br>
+    <input type="radio" name="head strike" value="reports">reports
+    <input type="radio" name="head strike" value="denies" checked>denies<br><br>
+
+    <label>DNV (Dizziness, nausea, vomiting):</label><br>
+    <input type="radio" name="DNV" value="reports">reports
+    <input type="radio" name="DNV" value="denies" checked>denies<br><br>
+
+    <label>Blood thinners:</label><br>
+    <input type="radio" name="blood thinners" value="reports">reports
+    <input type="radio" name="blood thinners" value="denies" checked>denies<br><br>
+  </fieldset>
+
+  <label for="painScale">Pain scale (0-10):</label>
+  <select id="painScale">
+    <option value="">Select…</option>
+    <option value="0">0 - No Pain</option>
+    <option value="1">1 - Minimal Pain</option>
+    <option value="2">2 - Mild Pain</option>
+    <option value="3">3 - Uncomfortable Pain</option>
+    <option value="4">4 - Moderate Pain</option>
+    <option value="5">5 - Distracting Pain</option>
+    <option value="6">6 - Distressing Pain</option>
+    <option value="7">7 - Unmanageable Pain</option>
+    <option value="8">8 - Intense Pain</option>
+    <option value="9">9 - Severe Pain</option>
+    <option value="10">10 - Worst Possible Pain</option>
+  </select><br>
+
+  <label for="alcoholConsumption">Alcohol consumption:</label>
+  <select id="alcoholConsumption" onchange="toggleAlcoholDetails()">
+    <option value="">Select…</option>
+    <option value="reports">reports</option>
+    <option value="denies">denies</option>
+  </select><br>
+
+  <!-- Initially hidden text fields for alcohol consumption details -->
+  <div id="alcoholConsumptionDetails" style="display: none;">
+    <!-- Indent with style="margin-left: 15px;" -->
+    <label for="numberOfAlcoholicBeverages" style="margin-left: 15px;">Number of drinks: </label>
+    <input type="text" id="numberOfAlcoholicBeverages" placeholder="0…"><br>
+  </div>
+  <div id="alcoholConsumptionDetails2" style="display: none;">
+    <label for="timeOfAlcoholConsumption" style="margin-left: 15px;">When: </label>
+    <input type="text" id="timeOfAlcoholConsumption" placeholder="e.g., today, 1 hr ago…"><br>
+  </div>
+
+  <label for="pmhxSelection">PMHx:</label>
+  <select id="pmhxSelection" onchange="togglePMHXDetails()">
+    <option value="">Select…</option>
+    <option value="denies">denies</option>
+    <option value="reports" selected>reports</option>
+  </select><br>
+
+  <!-- Initially displayed text field for PMHX details -->
+  <div id="pmhxDetails" style="display: block;">
+    <label for="pmhxDetailsText" style="margin-left: 15px;">Details:</label>
+    <input type="text" id="pmhxDetailsText" placeholder="PMHx details…"><br>
+  </div>
+
+<h2>III. Objective assessment</h2>
+
+<label for="alertnessOrientation">A&O status:</label>
+<select id="alertnessOrientation">
+  <option value="A&Ox4">A&Ox4 (Alert & Oriented to person, place, time, and situation)</option>
+  <option value="A&Ox3 (oriented to X but not Y)">A&Ox3</option>
+  <option value="A&Ox2 (oriented to X but not Y)">A&Ox2</option>
+  <option value="A&Ox1 (oriented to X but not Y)">A&Ox1</option>
+</select><br>
+
+<fieldset>
+  <legend>Physical exam</legend>
+
+  <label>Positive patent airway:</label><br>
+  <input type="radio" name="positive patent airway" value="Yes">Yes
+  <input type="radio" name="positive patent airway" value="No">No
+  <input type="radio" name="positive patent airway" value="N/A" checked>N/A<br><br>
+
+  <label>Respiratory effort regular and unlabored:</label><br>
+  <input type="radio" name="respiratory effort regular and unlabored" value="Yes">Yes
+  <input type="radio" name="respiratory effort regular and unlabored" value="No">No
+  <input type="radio" name="respiratory effort regular and unlabored" value="N/A" checked>N/A<br><br>
+
+  <label>Positive distal pulses:</label><br>
+  <input type="radio" name="positive distal pulses" value="Yes">Yes
+  <input type="radio" name="positive distal pulses" value="No">No
+  <input type="radio" name="positive distal pulses" value="N/A" checked>N/A<br><br>
+
+  <label>No obvious sign of hemorrhage:</label><br>
+  <input type="radio" name="no obvious sign of hemorrhage" value="Yes">Yes
+  <input type="radio" name="no obvious sign of hemorrhage" value="No">No
+  <input type="radio" name="no obvious sign of hemorrhage" value="N/A" checked>N/A<br><br>
+
+  <label>HEENT intact:</label><br>
+  <input type="radio" name="HEENT intact" value="Yes">Yes
+  <input type="radio" name="HEENT intact" value="No">No
+  <input type="radio" name="HEENT intact" value="N/A" checked>N/A<br><br>
+
+  <label>PERRL:</label><br>
+  <input type="radio" name="PERRL" value="Yes">Yes
+  <input type="radio" name="PERRL" value="No">No
+  <input type="radio" name="PERRL" value="N/A" checked>N/A<br><br>
+
+  <label>ABD SS/NT/NDx4 quadrants:</label><br>
+  <input type="radio" name="ABD SS/NT/NDx4" value="Yes">Yes
+  <input type="radio" name="ABD SS/NT/NDx4" value="No">No
+  <input type="radio" name="ABD SS/NT/NDx4" value="N/A" checked>N/A<br><br>
+
+  <label>Positive PMSx4 extremities:</label><br>
+  <input type="radio" name="positive PMSx4" value="Yes">Yes
+  <input type="radio" name="positive PMSx4" value="No">No
+  <input type="radio" name="positive PMSx4" value="N/A" checked>N/A<br><br>
+
+  <label>Gait steady:</label><br>
+  <input type="radio" name="gait steady" value="Yes">Yes
+  <input type="radio" name="gait steady" value="No" checked>No
+  <input type="radio" name="gait steady" value="N/A" checked>N/A<br><br>
+
+  <!-- For additional assessments, ensure unique name attributes and add to assessments list. -->
+</fieldset>
+
+<h2>IV. Transport</h2>
+
+    <label for="destinationHospital">Destination hospital:</label>
+    <input type="text" id="destinationHospital" placeholder="54…"><br>
 
   <button type="button" onclick="updateNarrative()">Update Narrative</button>
 </form>
 
+<h1>PCR Narrative to Edit</h1>
 <button id="copy_button-main" onclick="navigator.clipboard.writeText($('#textbox-main').val());alert('Copied!')">Copy Narrative</button><br>
 
-<textarea id="textbox-main" rows="20" onclick="this.focus();this.select()" style="height: auto; width: 90%; max-width: 90%;">
-  <!-- The dynamic narrative will appear here -->
+<textarea id="textbox-main" rows="40" style="height: auto; width: 90%; max-width: 90%;">
 </textarea>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 </body>
 </html>
+
+<!--<textarea id="textbox-main" rows="20" onclick="this.focus();this.select()" style="height: auto; width: 90%; max-width: 90%;">-->
+
+<!--<label for="newLabel">Label:</label>-->
+<!--<select id="newLabel">-->
+<!--  <option value="BLANK">Select…</option>-->
+<!--  <option value="a">A</option>-->
+<!--  <option value="b">B</option>-->
+<!--  <option value="c">C</option>-->
+<!--  <!-- Add more options as needed -->
+<!--</select><br>-->
