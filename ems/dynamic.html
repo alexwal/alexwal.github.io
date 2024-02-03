@@ -1,1 +1,82 @@
-.
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <title>awal.io - EMS</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="./assets/images/favicon.png">
+  <script>
+    $(document).ready(function() {
+      function updateNarrative() {
+        var injuryType = $('#injuryType').val();
+        var patientAge = $('#patientAge').val();
+        var patientGender = $('#patientGender').val();
+        var consciousness = $('#consciousness').val();
+        var distressLevel = $('#distressLevel').val();
+        // Add more variables as needed
+
+        var narrative = `93K1 dispatched to the emergency call for the ${injuryType}.\n\n` +
+        `Upon arrival, unit found approx ${patientAge} y/o ${patientGender} ${consciousness}, ` +
+        `${distressLevel}, in no obvious distress.\n\n` +
+        // Continue building narrative string with all inputs
+        `...`; // Placeholder for additional narrative content
+
+        $('#textbox-main').val(narrative);
+      }
+
+      // Event listeners for form elements
+      $('input, select').change(updateNarrative);
+    });
+  </script>
+</head>
+<body>
+
+<form id="narrativeForm">
+  <label for="injuryType">Type of Injury:</label>
+  <select id="injuryType">
+    <option value="INJURY">Select Injury Type</option>
+    <option value="fall">Fall</option>
+    <option value="trauma">Trauma</option>
+    <option value="medical">Medical</option>
+    <!-- Add more options as needed -->
+  </select><br>
+
+  <label for="patientAge">Patient Age:</label>
+  <input type="text" id="patientAge" placeholder="Approx Age"><br>
+
+  <label for="patientGender">Patient Gender:</label>
+  <select id="patientGender">
+    <option value="Gender">Select Gender</option>
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+    <!-- Add more options as needed -->
+  </select><br>
+
+  <label for="consciousness">Consciousness:</label>
+  <select id="consciousness">
+    <option value="conscious, alert, breathing">Conscious, Alert, Breathing</option>
+    <option value="unconscious">Unconscious</option>
+    <!-- Add more options as needed -->
+  </select><br>
+
+  <label for="distressLevel">Distress Level:</label>
+  <select id="distressLevel">
+    <option value="in no obvious distress">In No Obvious Distress</option>
+    <option value="in mild distress">In Mild Distress</option>
+    <!-- Add more options as needed -->
+  </select><br>
+
+  <!-- Add more inputs as needed -->
+
+  <button type="button" onclick="updateNarrative()">Update Narrative</button>
+</form>
+
+<button id="copy_button-main" onclick="navigator.clipboard.writeText($('#textbox-main').val());alert('Copied!')">Copy Narrative</button><br>
+
+<textarea id="textbox-main" rows="20" onclick="this.focus();this.select()" style="height: auto; width: 90%; max-width: 90%;">
+  <!-- The dynamic narrative will appear here -->
+</textarea>
+
+</body>
+</html>
