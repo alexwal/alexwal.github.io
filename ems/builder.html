@@ -59,13 +59,13 @@
 
         // Check the selection and format the text accordingly
         if (consumptionSelection === "denies") {
-          consumptionText = "denies consumption of alcohol";
+          consumptionText = "Pt denies consumption of alcohol";
         } else if (consumptionSelection === "reports") {
           // Get the details from the text input
           var numberOfAlcoholicBeverages = document.getElementById("numberOfAlcoholicBeverages").value;
           var timeOfAlcoholConsumption = document.getElementById("timeOfAlcoholConsumption").value;
           // Construct the text to include the details of alcohol consumption
-          consumptionText = `reports drinking ${numberOfAlcoholicBeverages} alcoholic beverages ${timeOfAlcoholConsumption}`;
+          consumptionText = `Pt reports drinking ${numberOfAlcoholicBeverages} alcoholic beverages ${timeOfAlcoholConsumption}`;
         }
 
         return consumptionText;
@@ -296,17 +296,17 @@ MRN: X (no insurance)\n`;
   <label for="painScale">Pain scale (0-10):</label>
   <select id="painScale">
     <option value="PAINSCALE">Select…</option>
-    <option value="0">0 - no Pain</option>
-    <option value="1">1 - Minimal Pain</option>
-    <option value="2">2 - Mild Pain</option>
-    <option value="3">3 - Uncomfortable Pain</option>
-    <option value="4">4 - Moderate Pain</option>
-    <option value="5">5 - Distracting Pain</option>
-    <option value="6">6 - Distressing Pain</option>
-    <option value="7">7 - Unmanageable Pain</option>
-    <option value="8">8 - Intense Pain</option>
-    <option value="9">9 - Severe Pain</option>
-    <option value="10">10 - Worst Possible Pain</option>
+    <option value="0">0 - No pain</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10 - Worst pain ever felt</option>
   </select><br>
 
   <label for="alcoholConsumption">Alcohol consumption:</label>
@@ -330,8 +330,8 @@ MRN: X (no insurance)\n`;
   <label for="pmhxSelection">PMHx:</label>
   <select id="pmhxSelection" onchange="togglePMHXDetails()">
     <option value="">Select…</option>
-    <option value="denies">denies</option>
     <option value="reports" selected>reports</option>
+    <option value="denies">denies</option>
   </select><br>
 
   <!-- Initially displayed text field for PMHX details -->
