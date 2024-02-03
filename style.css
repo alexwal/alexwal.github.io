@@ -1,5 +1,10 @@
 /* style.css - Aiming to preserve default browser appearance. */
 
+/* Use the default sans serif font everywhere. */
+* {
+  font-family: sans-serif;
+}
+
 /* A blank clickable space. */
 .hidden-link {
   display: inline-block;
