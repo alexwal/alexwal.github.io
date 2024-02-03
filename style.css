@@ -1,0 +1,10 @@
+/* style.css - Aiming to preserve default browser appearance. */
+
+/* A blank clickable space. */
+.hidden-link {
+  display: inline-block;
+  width: 100%;
+  height: 1em;
+  background-color: transparent;
+  text-decoration: none;
+}
